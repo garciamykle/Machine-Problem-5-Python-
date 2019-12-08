@@ -1,0 +1,45 @@
+#MACHINE PROBLEM 5
+
+import matplotlib.pyplot as plt
+import numpy as np
+
+n = np.linspace(0,199, num=200) # n = 0:199
+
+eqn = input('Please enter an equation: ') # for example: np.sin((3*np.pi/100)*n)
+x = eval(eqn) # for evaluating the equation
+
+for i in range(0,200):
+    if n.any() == 0:
+        # y = -1.5*x + (2*x *(n + 1)) - (0.5*x *(n+2))
+        y1 = -1.5*eval(eqn)
+        n = n+1
+        y2 = 2*eval(eqn)
+        n = n+2
+        y3 = 0.5*eval(eqn)
+        y = y1+y2-y3
+        
+    elif n.any() == 199:
+        # y = 1.5*x - (2*x)*(n - 1) + (0.5*x)*(n - 2)
+        y1 = 1.5*eval(eqn)
+        n = n-1
+        y2 = 2*eval(eqn)
+        n = n-2
+        y3 = 0.5*eval(eqn)
+        y = y1-y2+y3
+    
+    else:
+        # y = (0.5*x)*(n+1) - (0.5*x)*(n - 1)
+        n = n+1
+        y2 = 0.5*eval(eqn)
+        n = n-1
+        y3 = 0.5*eval(eqn)
+        y = y2-y3
+#plotting codes
+plt.grid()
+plt.title('MACHINE PROBLEM 5')
+plt.plot(y, color ='r', label = "Sine Wave Y")
+plt.plot(x, color ='b', label = "Sine Wave X")
+plt.legend(loc="upper right")
+plt.xlabel('x-axis')
+plt.ylabel('y-axis')
+plt.show()
